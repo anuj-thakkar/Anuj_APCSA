@@ -1,22 +1,23 @@
 /**
    A question with a text and an answer.
 */
-public class Question
+public class Question implements Complexity
 {
    private String text;
    private String answer;
+   private int complexity = 1;
 
    /**
-      Constructs a question with a question and answer.
+      Constructs a question with empty question and answer.
    */
-   public Question(String inText, String inAnswer) 
+   public Question() 
    {
-      text = inText;
-      answer = inAnswer;
+      text = "";
+      answer = "";
    }
 
    /**
-      Sets the question text, in case you need to change it
+      Sets the question text.
       @param questionText the text of this question
    */
    public void setText(String questionText)   
@@ -24,33 +25,13 @@ public class Question
       text = questionText;
    }
 
-
-  /**
-      Gets the question text.
-      @returns questionText the text of this question
-   */
-   public String getText()   
-   {
-      return text;
-   }
-   
-   
    /**
-      Sets the answer for this question, in case you need to change it
+      Sets the answer for this question.
       @param correctResponse the answer
    */
    public void setAnswer(String correctResponse)
    {
       answer = correctResponse;
-   }
-
-   /**
-      Gets the answer for this question, in case you need to change it
-      @return correctResponse the answer
-   */
-   public String getAnswer()
-   {
-      return answer;
    }
 
    /**
@@ -62,4 +43,28 @@ public class Question
    {
       return response.equals(answer);
    }
+
+   /**
+      Displays this question.
+   */
+   public void display()
+   {
+      System.out.println(text);
+   }
+   
+   public String toString()
+   {
+       return "The question is " + text + " and the answer is " + answer;
+   }
+   
+   public void setComplexity(int complexityLevel)
+   {
+       complexity = complexityLevel;
+    }
+    
+   public int getComplexity()
+   {
+       return complexity;
+   }
 }
+       
