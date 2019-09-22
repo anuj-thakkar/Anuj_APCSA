@@ -1,37 +1,26 @@
 /**
-   A bank account has a balance that can be changed by 
+   A bank account has a balance that can be changed by
    deposits and withdrawals.
 */
 public class BankAccount
-{  
+{
+   private double balance;
+
    /**
-      Constructs a bank account with a zero balance
-      @param anAccountNumber the account number for this account
+      Constructs a bank account with a zero balance.
    */
-   public BankAccount(int anAccountNumber)
-   {   
-      accountNumber = anAccountNumber;
+   public BankAccount()
+   {
       balance = 0;
    }
 
    /**
-      Constructs a bank account with a given balance
-      @param anAccountNumber the account number for this account
+      Constructs a bank account with a given balance.
       @param initialBalance the initial balance
    */
-   public BankAccount(int anAccountNumber, double initialBalance)
-   {   
-      accountNumber = anAccountNumber;
+   public BankAccount(double initialBalance)
+   {
       balance = initialBalance;
-   }
-
-   /**
-      Gets the account number of this bank account.
-      @return the account number
-   */
-   public int getAccountNumber()
-   {   
-      return accountNumber;
    }
 
    /**
@@ -39,9 +28,8 @@ public class BankAccount
       @param amount the amount to deposit
    */
    public void deposit(double amount)
-   {  
-      double newBalance = balance + amount;
-      balance = newBalance;
+   {
+      balance = balance + amount;
    }
 
    /**
@@ -49,9 +37,8 @@ public class BankAccount
       @param amount the amount to withdraw
    */
    public void withdraw(double amount)
-   {   
-      double newBalance = balance - amount;
-      balance = newBalance;
+   {
+      balance = balance - amount;
    }
 
    /**
@@ -59,10 +46,16 @@ public class BankAccount
       @return the current balance
    */
    public double getBalance()
-   {   
+   {
       return balance;
    }
 
-   private int accountNumber;
-   private double balance;
+   /**
+      Adds interest to the bank account.
+      @param rate The percentage rate of interest gained.
+   */
+   public void addInterest(double rate)
+   {
+      balance = balance + balance * rate / 100;
+   }
 }
