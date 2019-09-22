@@ -1,79 +1,68 @@
 /**
-   A bank account has a balance and a mechanism for applying interest or fees at 
-   the end of the month.
+   A bank account has a balance that can be changed by 
+   deposits and withdrawals.
 */
-public class BankAccount 
-{
-   private double balance;
-
+public class BankAccount
+{  
    /**
-      Constructs a bank account with zero balance.
+      Constructs a bank account with a zero balance
+      @param anAccountNumber the account number for this account
    */
-   public BankAccount()
-   {
+   public BankAccount(int anAccountNumber)
+   {   
+      accountNumber = anAccountNumber;
       balance = 0;
    }
 
-  /**
-      Constructs a bank account with a balance.
+   /**
+      Constructs a bank account with a given balance
+      @param anAccountNumber the account number for this account
+      @param initialBalance the initial balance
    */
-  public BankAccount(double amount)
-  {
-      balance = amount;
-      
-      if (amount < 0)
-      {
-          throw new NegativeBalanceException("balance is less than zero");
-      }
-      balance = balance - amount;
-  }
+   public BankAccount(int anAccountNumber, double initialBalance)
+   {   
+      accountNumber = anAccountNumber;
+      balance = initialBalance;
+   }
 
    /**
-      Makes a deposit into this account.
-      @param amount the amount of the deposit
+      Gets the account number of this bank account.
+      @return the account number
    */
-  public void deposit(double amount)
-  {
-     
-      if(amount < 0)
-      {
-          throw new NegativeAmountException("cannot deposit a negative amount");
-      }
-      
-      balance = balance + amount;
-  }
-   
-  /**
-      Makes a withdrawal from this account, or charges a penalty if
-      sufficient funds are not available.
-      @param amount the amount of the withdrawal
+   public int getAccountNumber()
+   {   
+      return accountNumber;
+   }
+
+   /**
+      Deposits money into the bank account.
+      @param amount the amount to deposit
    */
-  public void withdraw(double amount)
-  {
-      
-      if(amount > balance)
-      {
-          throw new InsufficientFundsException("cannot withdeaw more than your balance");
-      }
-      balance = balance - amount;
-  }
-  
-  /**
-      Carries out the end of month processing that is appropriate
-      for this account.
+   public void deposit(double amount)
+   {  
+      double newBalance = balance + amount;
+      balance = newBalance;
+   }
+
+   /**
+      Withdraws money from the bank account.
+      @param amount the amount to withdraw
    */
-  public void monthEnd() 
-  {
-  }
-   
-  /**
-      Gets the current balance of this bank account.
+   public void withdraw(double amount)
+   {   
+      double newBalance = balance - amount;
+      balance = newBalance;
+   }
+
+   /**
+      Gets the current balance of the bank account.
       @return the current balance
    */
-  public double getBalance()
-  {
+   public double getBalance()
+   {   
       return balance;
-  }
-   
-  
+   }
+
+   private int accountNumber;
+   private double balance;
 }

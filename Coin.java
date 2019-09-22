@@ -1,23 +1,20 @@
 /**
    A coin with a monetary value.
 */
-public class Coin implements Comparable
+public class Coin
 {
-  private double value;
-  private String name;
-    
-  /**
+   /**
       Constructs a coin.
       @param aValue the monetary value of the coin.
       @param aName the name of the coin
    */
-   public Coin(double aValue, String aName) 
+   public Coin(double aValue) 
    { 
       value = aValue; 
-      name = aName;
+      
    }
 
-  /**
+   /**
       Gets the coin value.
       @return the value
    */
@@ -26,7 +23,7 @@ public class Coin implements Comparable
       return value;
    }
 
-  /**
+   /**
       Gets the coin name.
       @return the name
    */
@@ -34,26 +31,13 @@ public class Coin implements Comparable
    {
       return name;
    }
+
   
-  public String toString()
+   public String toString()
    {
-      return "Coin[value=" + value + ",name=" + name + "]";
+      return "Coin[value=" + value + "]";
    }
-   
-  public int compareTo(Object otherObject)
-  {
-      Coin other = (Coin) otherObject;
-      if(value < other.value) 
-      {
-          return -1; 
-      }
-      else if(value > other.value)
-      {
-          return 1;
-      }
-      else
-      {
-          return 0;    
-      }
-    }
+
+   private double value;
+   private String name;
 }

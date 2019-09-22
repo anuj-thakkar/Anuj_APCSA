@@ -1,5 +1,4 @@
 import java.util.Random;
-import java.util.ArrayList;
 
 /**
    This class contains utility methods for array manipulation.
@@ -7,7 +6,6 @@ import java.util.ArrayList;
 public class ArrayUtil
 { 
    private static Random generator = new Random();
-   
 
    /**
       Creates an array filled with random values.
@@ -33,14 +31,43 @@ public class ArrayUtil
       @param i the first position to swap
       @param j the second position to swap
    */
-   public static void swap(ArrayList list, int i, int j)
+   public static void swap(int[] a, int i, int j)
    {
-      String temp = (String)list.get(i);
-      list.set(i, list.get(i));
-      list.set(i, temp);
+      int temp = a[i];
+      a[i] = a[j];
+      a[j] = temp;
    }
    
- 
+   /**
+      Creates an array filled with random values.
+      @param length the length of the array
+      @param n the number of possible random values
+      @return an array filled with length numbers between
+      0 and n - 1
+   */
+   public static Coin[] randomCoinArray(int length, int n)
+   {  
+      Coin[] a = new Coin[length];      
+      for (int i = 0; i < a.length; i++)
+      {
+         a[i] = new Coin(generator.nextInt(n));
+      }
+      
+      return a;
+   }
+
+   /**
+      Swaps two entries of an array.
+      @param a the array
+      @param i the first position to swap
+      @param j the second position to swap
+   */
+   public static void swap(Coin[] a, int i, int j)
+   {
+      Coin temp = a[i];
+      a[i] = a[j];
+      a[j] = temp;
+   }
    
    public static String[] randomStringArray(int length, int n)
    {  
